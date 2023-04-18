@@ -62,13 +62,14 @@ int main(int argc, char **argv) {
 	Elf64_Ehdr ehdr;
 	Elf64_Phdr phdr;
 	Elf64_Shdr shdr;
+	const int instruction_offset = 0x401176/* Intruction address*/ - 0x401156 /* variable address*/;
 	int fd = open("hello", O_RDWR);
 	read(fd, &ehdr, sizeof(ehdr));
 	struct code_cave cc;
 	get_code_cave(fd, &cc);
 	printf("Entrypoint: 0x%x\n", ehdr.e_entry);
 //	ehdr.e_entry = 0x401040;
-	ehdr.e_entry = 0x400000 + cc.cave_location;
+	ehdr.e_entry = 0x400000 + cc.cave_location + instruction_offset;
 	lseek(fd, 0, SEEK_SET);
 	write(fd, &ehdr, sizeof(ehdr));
 
