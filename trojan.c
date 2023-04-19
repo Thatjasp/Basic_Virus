@@ -69,7 +69,7 @@ int main(int argc, char **argv) {
 	get_code_cave(fd, &cc);
 	printf("Entrypoint: 0x%x\n", ehdr.e_entry);
 //	ehdr.e_entry = 0x401040;
-	ehdr.e_entry = 0x400000 + cc.cave_location + instruction_offset;
+	ehdr.e_entry = 0x400000 + cc.cave_location;
 	lseek(fd, 0, SEEK_SET);
 	write(fd, &ehdr, sizeof(ehdr));
 
