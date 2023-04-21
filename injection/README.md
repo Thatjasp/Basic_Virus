@@ -8,9 +8,9 @@ CPU: Intel i7-8565U
 # Dependencies 
 Packages used: nasm-2.16.01-1
 
-To update upgrade packages use `sudo pacman -Syu`
+To update upgrade packages: `sudo pacman -Syu`
 
-To install nasm use `sudo pacman -S nasm`
+To install nasm: `sudo pacman -S nasm`
 
 # Instructions 
 
