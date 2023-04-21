@@ -23,6 +23,7 @@ To install nasm: `sudo pacman -S nasm`
 - copy another `hello` executable and run `./hello_virus`
 - `hello_virus` will produce output `hello world` and rename itself `hello_rename`. `hello` will be named `hello_virus`
 
+## Commands
 1. `./assemble.sh`
 2. `cp ./hello_dir/hello ./`
 3. `./inject`
