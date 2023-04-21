@@ -1,12 +1,15 @@
 # Specs
 Flavor: [Artix-plasma-openrc-x86_64](https://artixlinux.org/download.php)
+
 Kernel: 6.2.6-artix1-1
+
 CPU: Intel i7-8565U
 
 # Dependencies 
 Packages used: nasm-2.16.01-1
 
-To update upgrade packages use `sudo pacman -Syu`.
+To update upgrade packages use `sudo pacman -Syu`
+
 To install nasm use `sudo pacman -S nasm`
 
 # Instructions 
