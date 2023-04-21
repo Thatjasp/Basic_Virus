@@ -28,16 +28,16 @@ To install nasm: `sudo pacman -S nasm`
 2. `cp ./hello_dir/hello ./`
 3. `./inject`
 4. `ls`
-```
+```console
 hello_rename	hello_virus...
 ```
 5. `rm hello_rename`
 6. `cp ./hello_dir/hello ./`
 7. `./hello_virus`
-```
+```console
 hello world!
 ```
 8. `ls`
-```
+```console
 hello_rename	hello_virus...
 ```
